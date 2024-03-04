@@ -39,6 +39,8 @@ int main( void )
 
       uart_writeByte(read_char);
       uart_writeByte(read_char);
+      uart_writeByte(read_char);
+      uart_writeByte(read_char);
       if ((int)read_char == 10){
         uart_writeByte('s');
         uart_writeByte('\n');
