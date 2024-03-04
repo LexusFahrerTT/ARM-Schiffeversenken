@@ -18,6 +18,30 @@
 					"color": "#dd8800",
 					"command": "qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -S -s -serial mon:stdio",
 					"singleInstance": true
+				},
+				{
+					"name": "Debug Qemu",
+					"color": "#dd8800",
+					"command": "qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -S -s -serial mon:stdio",
+					"singleInstance": true
+				},
+				{
+					"name": "Run Qemu",
+					"color": "#448800",
+					"command": "qemu-system-arm -M microbit -device loader,file=build-cortex-m0/testApp.elf -nographic -serial mon:stdio",
+					"singleInstance": true
+				},
+				{
+					"name": "ohne Build",
+					"color": "#0088dd",
+					"command": "cmake --preset arm-cortex-m0-mingw",
+					"singleInstance": true
+				},
+				{
+					"name": "mit Build",
+					"color": "#0088dd",
+					"command": "cmake --build --preset arm-cortex-m0-mingw",
+					"singleInstance": true
 				}
 			]
 		},

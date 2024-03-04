@@ -12,14 +12,44 @@
  **/
 
 #include "register_access.h"
+#include "uart.h"
+#include "random.h"
+#include "timer.h"
 
 int main( void )
 {
-  uint32_t value = register_read( 0x20000000 );
+  uart_init();
+  rng_init();
 
-  value = ~value;
+  for(;;){
+    uint8_t read_char = uart_readByte();
 
-  register_write( 0x20000000, value );
+    uint8_t value = 48;
+    /*do
+    {
+      uint8_t value = rng_getRandomValue_immediately();
+    } while (value < 48 && value > 60);
+    */
+
+    if(0 != read_char){
+
+      //do {
+      //  value = rng_getRandomValue_immediately();
+      //} while (value < 65 || value > 123);
+
+      uart_writeByte(read_char);
+      uart_writeByte(read_char);
+      if ((int)read_char == 10){
+        uart_writeByte('s');
+        uart_writeByte('\n');
+      }
+      
+      
+      
+      //uart_writeByte(rng_getRandomValue_immediately());
+
+    }
+  }
 
   return 0;
 }
