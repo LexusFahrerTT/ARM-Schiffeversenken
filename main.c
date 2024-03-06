@@ -16,6 +16,25 @@
 #include "random.h"
 #include "timer.h"
 
+
+void clear_screen(void){
+  for(int i = 0; i < 2550; i++){
+    uart_writeByte("\033[1;31mHallo Welt\033[0m\n");
+  }
+}
+
+
+char clear_screeen[] = "\033[2J";
+char set_pos[] = "\033[H";
+
+
+void execute_ANSI_esc_codes(char esc_code[]){
+    for(int i = 0; esc_code[i] != '\0'; i++) {
+          uart_writeByte(esc_code[i]);
+    }
+}
+
+
 int main( void )
 {
   uart_init();
@@ -37,13 +56,16 @@ int main( void )
       //  value = rng_getRandomValue_immediately();
       //} while (value < 65 || value > 123);
 
+      //uart_writeByte(test);
+
+      execute_ANSI_esc_codes(clear_screeen);
+      execute_ANSI_esc_codes(set_pos);
+
       uart_writeByte(read_char);
       uart_writeByte(read_char);
       uart_writeByte(read_char);
-      uart_writeByte(read_char);
-      if ((int)read_char == 10){
-        uart_writeByte('s');
-        uart_writeByte('\n');
+      if ((int)read_char == 48){
+        clear_screen();
       }
       
       
