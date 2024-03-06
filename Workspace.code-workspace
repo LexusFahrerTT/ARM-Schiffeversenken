@@ -54,6 +54,9 @@
 			"launch": {"visibility": "hidden"},
 			"launchTarget": {"visibility": "hidden"},
 			"buildTarget": {"visibility": "hidden"}
+		},
+		"files.associations": {
+			"timer.h": "c"
 		}
 
 	},

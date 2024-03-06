@@ -23,6 +23,7 @@ int enemy_board[10][10];
 int my_board[10][10];
 
 
+
 void setup_board(int board[10][10]){
     for(int i = 0; i < 10; i++) {
         for(int j = 0; j < 10; j++) {
@@ -38,51 +39,52 @@ void execute_ANSI_esc_codes(char esc_code[]){
     }
 }
 
-void write_board_on_screen(int board[][10], int rows, int cols, int player){
+void draw_screen(int my_board[10][10], int enemy_board[10][10]){
   
-  //enemy player
-  if(player == 0){
 
-    execute_ANSI_esc_codes("\033[3;5H");
+  draw_board(my_board, "\033[3;5H");
+  draw_board(enemy_board, "\033[20;5H");
+}
+
+
+void draw_board(int board[10][10], char start_pos[]){
+  //execute_ANSI_esc_codes("\033[3;5H");
+  execute_ANSI_esc_codes(start_pos);
     //A-J
-    for(int j = 0; j < 10; j++) {
-      uart_writeByte(65 + j);
-      uart_writeByte(' ');
-    }
-    uart_writeByte('\n');
-
-    execute_ANSI_esc_codes("\033[2C");
-    //execute_ANSI_esc_codes("\033[4;3H");
-    
-    //print top border
+  for(int j = 0; j < 10; j++) {
+    uart_writeByte(65 + j);
     uart_writeByte(' ');
-    for(int i = 0; i < 21; i++){
-      uart_writeByte(205);
-    }
+  }
+  uart_writeByte('\n');
 
-    uart_writeByte('\n');
-
-    for(int i = 0; i < 10; i++) {
-        uart_writeByte(48 + i);
-        uart_writeByte(' ');
-        uart_writeByte(206);
-        uart_writeByte(' ');
-        for(int j = 0; j < 10; j++) {
-            uart_writeByte(board[i][j]);
-            uart_writeByte(' ');
-        }
-        uart_writeByte(206);
-        uart_writeByte('\n');
-    }
-
-    execute_ANSI_esc_codes("\033[3C");
-    for(int i = 0; i < 21; i++){
-      uart_writeByte(205);
-    }
-
+  execute_ANSI_esc_codes("\033[2C");
+  //execute_ANSI_esc_codes("\033[4;3H");
+  
+  //print top border
+  uart_writeByte(' ');
+  for(int i = 0; i < 21; i++){
+    uart_writeByte(205);
   }
 
+  uart_writeByte('\n');
 
+  for(int i = 0; i < 10; i++) {
+      uart_writeByte(48 + i);
+      uart_writeByte(' ');
+      uart_writeByte(206);
+      uart_writeByte(' ');
+      for(int j = 0; j < 10; j++) {
+          uart_writeByte(board[i][j]);
+          uart_writeByte(' ');
+      }
+      uart_writeByte(206);
+      uart_writeByte('\n');
+  }
+
+  execute_ANSI_esc_codes("\033[3C");
+  for(int i = 0; i < 21; i++){
+    uart_writeByte(205);
+  }
 }
 
 int main( void )
@@ -90,6 +92,7 @@ int main( void )
   uart_init();
   rng_init();
 
+  //timer_init_detailed(15, 3, 1953);
 
   int input_user[2]; 
   int input_counter = 0;
@@ -100,6 +103,7 @@ int main( void )
   for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             my_board[i][j] = 55;
+            enemy_board[i][j] = 65;
         }
   }
 
@@ -107,7 +111,7 @@ int main( void )
   //setup_board(enemy_board);
 
 
-  write_board_on_screen(my_board,1,1, 0);
+  draw_screen(my_board, enemy_board);
   execute_ANSI_esc_codes("\033[15;2H");
   //clean_board(my_board);
 
@@ -161,7 +165,7 @@ int main( void )
 
             execute_ANSI_esc_codes(clear_screen);
             execute_ANSI_esc_codes(set_pos);
-            write_board_on_screen(my_board,1,1, 0);
+            draw_screen(my_board, enemy_board);
             execute_ANSI_esc_codes("\033[15;2H");
           }
       }
