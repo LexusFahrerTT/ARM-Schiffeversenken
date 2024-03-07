@@ -53,6 +53,12 @@ int total_shoots_bot[4] = {0, 0, 0, 0};
 int total_hits_bot[4] = {0, 0, 0, 0};
 int total_missess_bot[4] = {0, 0, 0, 0};
 
+int message_value = 0;
+char message_start[] = "Please type in your coordinates!";
+char message_hit[] = "That was a hit!";
+char message_miss[] = "Nothing was there, unfortunatly!";
+char message_not_valid[] = "Input not valid";
+char message_already_shot[] = "You shot already there!";
 
 
 void placeShip(int* board[10][10]) {
@@ -221,6 +227,29 @@ int8_t check_if_someone_won(int* board[10][19]){
   return loose;
 }
 
+void show_message(int8_t message_value,  char ansi_coordinates[]){
+  execute_ANSI_esc_codes(ansi_coordinates);
+  execute_ANSI_esc_codes("Message: ");
+
+  switch(message_value) {
+        case 0:
+            execute_ANSI_esc_codes(message_start);
+            break;
+        case 1:
+            execute_ANSI_esc_codes(message_hit);
+            break;
+        case 2:
+            execute_ANSI_esc_codes(message_miss);
+            break;
+        case 3:
+            execute_ANSI_esc_codes(message_already_shot);
+            break;
+        case 4:
+            execute_ANSI_esc_codes(message_not_valid);
+            break;
+    }
+}
+
 void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
   
   clear_screeen();
@@ -237,6 +266,7 @@ void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
   show_statistics("Total Miss: ", "\033[16;30H", total_missess_player);
 
   show_input("Shoot: ", "\033[19;30H");
+  show_message(message_value, "\033[21;30H");
   //show_statistics("Already Shoot: ", "\033[20;30H", &total_shoots);
 
 
@@ -453,15 +483,21 @@ int main( void )
                 enemy_board[input_user[1] - 48][input_user[0] - 65] = 'x';
                 increment_stats_array(&total_hits_player);
                 increment_stats_array(&total_shoots_player);
+                message_value = 1;
               }
               else if(enemy_board[input_user[1] - 48][input_user[0] - 65] == ' '){
                 enemy_board[input_user[1] - 48][input_user[0] - 65] = 'o';
                 increment_stats_array(&total_missess_player);
                 increment_stats_array(&total_shoots_player);
+                message_value = 2;
               }
               else{
+                message_value = 3;
               }
               
+            }
+            else{
+              message_value = 4;
             }
 
             execute_ANSI_esc_codes(clear_screen);
