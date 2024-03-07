@@ -11,6 +11,24 @@
  * @brief *Main* Entry
  **/
 
+
+char ascii_art_player[] = 
+"  ____  _                       \n"
+" |  _ \\| | __ _ _   _  ___ _ __ \n"
+" | |_) | |/ _` | | | |/ _ \\ '__|\n"
+" |  __/| | (_| | |_| |  __/ |   \n"
+" |_|   |_|\\__,_|\\__, |\\___|_|   \n"
+"                |___/            \n";
+
+
+char ascii_art_bot[] = 
+        "   ____ ____  _   _    ____        _   \n"
+        "  / ___|  _ \\| | | |  | __ )  ___ | |_ \n"
+        " | |   | |_) | | | |  |  _ \\ / _ \\| __|\n"
+        " | |___|  __/| |_| |  | |_) | (_) | |_ \n"
+        "  \\____|_|    \\___/   |____/ \\___/ \\__|\n";
+
+
 #include "register_access.h"
 #include "uart.h"
 #include "random.h"
@@ -18,6 +36,8 @@
 
 char clear_screen[] = "\033[2J";
 char set_pos[] = "\033[H";
+
+char shoot_input_coordiantes[] = "\033[19;45H";
 
 int enemy_board[10][10]; 
 int my_board[10][10];
@@ -30,8 +50,14 @@ int modulo(uint8_t zaehler, int nenner) {
     return zaehler;
 }
 
+void clear_screeen(void){
+  execute_ANSI_esc_codes("\033[2J");
+  execute_ANSI_esc_codes("\033[H");
+}
+
 //timer method, which will be executed
 void Interrupt8_Handler(void){
+  
   timer_clearCompareEvent();
   
   uint8_t randomNumber1 = rng_getRandomValue_waiting();
@@ -45,13 +71,14 @@ void Interrupt8_Handler(void){
   //my_board[0][0] = 49;
   //uart_writeByte(my_board[0][0]);
   //timer_init_detailed(5, 30, 19530);
-  draw_screen(&my_board, &enemy_board);
+  
 
   int time_offset = 3730;
   int new_time_delay = modulo(rng_getRandomValue_waiting(), 16) * 1000;
   time_offset += new_time_delay;
   timer_init_detailed(28, 30, time_offset);
 
+  draw_screen(&my_board, &enemy_board);
 }
 
 
@@ -70,11 +97,50 @@ void execute_ANSI_esc_codes(char esc_code[]){
     }
 }
 
+void print_ascii_art(char ascii_art[], char esc_code[]){
+  uart_writeByte('\n');
+  execute_ANSI_esc_codes(esc_code);
+  for(int i = 0; ascii_art[i] != '\0'; i++) {
+    uart_writeByte(ascii_art[i]);
+    if(ascii_art[i] == '\n'){
+      execute_ANSI_esc_codes(esc_code);
+    }    
+  }
+}
+
+void show_statistics(char statistics_text[], char ansi_coordinates[]){
+  execute_ANSI_esc_codes(ansi_coordinates);
+  execute_ANSI_esc_codes(statistics_text);
+}
+
 void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
   
+  clear_screeen();
 
-  draw_board(my_board, "\033[3;5H");
-  draw_board(enemy_board, "\033[20;5H");
+  print_ascii_art(ascii_art_player, "\033[15C");
+  draw_board(my_board, "\033[9;5H");
+
+  
+  print_ascii_art(ascii_art_bot, "\033[15C");
+  draw_board(enemy_board, "\033[28;5H");
+
+  show_statistics("Total Shoots: ", "\033[12;30H");
+  show_statistics("Total Hits: ", "\033[14;30H");
+  show_statistics("Total Miss: ", "\033[16;30H");
+
+  show_statistics("Shoot: ", "\033[19;30H");
+  show_statistics("Already Shoot: ", "\033[20;30H");
+
+
+  show_statistics("Total Shoots: ", "\033[31;30H");
+  show_statistics("Total Hits: ", "\033[33;30H");
+  show_statistics("Total Miss: ", "\033[35;30H");
+  show_statistics("Already Shoot: ", "\033[39;30H");
+
+  //execute_ANSI_esc_codes("\033[20;40H");
+  //execute_ANSI_esc_codes("hallo");
+
+  execute_ANSI_esc_codes(shoot_input_coordiantes);
 }
 
 
@@ -109,6 +175,13 @@ void draw_board(int board[10][10], char start_pos[]){
           uart_writeByte(' ');
       }
       uart_writeByte(206);
+      
+      if(i == 5){
+        //execute_ANSI_esc_codes("\033[20;40H");
+        //execute_ANSI_esc_codes("hallo");
+        //("Total shoots: ", 0,0,0, "\033[10C");
+      }
+      
       uart_writeByte('\n');
   }
 
@@ -116,6 +189,7 @@ void draw_board(int board[10][10], char start_pos[]){
   for(int i = 0; i < 21; i++){
     uart_writeByte(205);
   }
+
 }
 
 
@@ -156,7 +230,7 @@ int main( void )
 
 
   draw_screen(&my_board, &enemy_board);
-  execute_ANSI_esc_codes("\033[15;2H");
+  //execute_ANSI_esc_codes("\033[15;2H");
   //clean_board(my_board);
 
   for(;;){
@@ -192,10 +266,10 @@ int main( void )
 
       //return
       if(read_char == 127){
-          execute_ANSI_esc_codes("\033[15;2H");
+          execute_ANSI_esc_codes(shoot_input_coordiantes);
           uart_writeByte(' ');
           uart_writeByte(' ');
-          execute_ANSI_esc_codes("\033[15;2H");
+          execute_ANSI_esc_codes(shoot_input_coordiantes);
           input_counter = 0;
       }
 
@@ -204,12 +278,12 @@ int main( void )
           if(input_counter >= 2){
             uart_writeByte('s');
             input_counter = 0;
-            my_board[input_user[0]][input_user[1]] = 50;
+            enemy_board[input_user[0]][input_user[1]] = 50;
 
             execute_ANSI_esc_codes(clear_screen);
             execute_ANSI_esc_codes(set_pos);
             draw_screen(&my_board, &enemy_board);
-            execute_ANSI_esc_codes("\033[15;2H");
+            execute_ANSI_esc_codes(shoot_input_coordiantes);
             
           }
       }
