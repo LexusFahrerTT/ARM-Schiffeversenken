@@ -42,6 +42,18 @@ char shoot_input_coordiantes[] = "\033[19;45H";
 int enemy_board[10][10]; 
 int my_board[10][10];
 
+int input_counter = 0;
+int input_user[2];
+
+int total_shoots_player[4] = {0, 0, 0, 0};
+int total_hits_player[4] = {0, 0, 0, 0};
+int total_missess_player[4] = {0, 0, 0, 0};
+
+int total_shoots_bot[4] = {0, 0, 0, 0};
+int total_hits_bot[4] = {0, 0, 0, 0};
+int total_missess_bot[4] = {0, 0, 0, 0};
+
+
 
 void placeShip(int* board[10][10]) {
     int ship_sizes[] = {2, 3, 4, 5};
@@ -119,19 +131,35 @@ void Interrupt8_Handler(void){
   
   timer_clearCompareEvent();
   
-  uint8_t randomNumber1 = rng_getRandomValue_waiting();
-  uint8_t randomNumber2 = rng_getRandomValue_waiting();
+  uint8_t randomNumber1 = 0;
+  uint8_t randomNumber2 = 0;
 
-  //uart_writeByte(modulo(randomNumber1, 10) + 48);
-  //uart_writeByte(modulo(randomNumber2, 10) + 48);
+  
+  
+  do{
+    randomNumber1 = rng_getRandomValue_waiting();
+    randomNumber2 = rng_getRandomValue_waiting();
 
-  my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] = 'x';
+    
+  }while(my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] == 'x' || my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] == 'o');
+
+  if(my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] == 1){
+      my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] = 'x';
+      increment_stats_array(&total_shoots_bot);
+      increment_stats_array(&total_hits_bot);
+  }
+  else{
+    my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] = 'o';
+    increment_stats_array(&total_shoots_bot);
+    increment_stats_array(&total_missess_bot);
+  }
+
   //my_board[0][0] = modulo(randomNumber2, 10) + 48;
   //my_board[0][0] = 49;
   //uart_writeByte(my_board[0][0]);
   //timer_init_detailed(5, 30, 19530);
   
-
+ 
   int time_offset = 3730;
   int new_time_delay = modulo(rng_getRandomValue_waiting(), 16) * 1000;
   time_offset += new_time_delay;
@@ -167,9 +195,30 @@ void print_ascii_art(char ascii_art[], char esc_code[]){
   }
 }
 
-void show_statistics(char statistics_text[], char ansi_coordinates[]){
+void show_statistics(char statistics_text[], char ansi_coordinates[], int values[4]){
   execute_ANSI_esc_codes(ansi_coordinates);
   execute_ANSI_esc_codes(statistics_text);
+  uart_writeByte(values[0] + 48);
+  uart_writeByte(values[1] + 48);
+  uart_writeByte(values[2] + 48);
+  uart_writeByte(values[3] + 48);
+}
+
+void show_input(char statistics_text[], char ansi_coordinates[]){
+  execute_ANSI_esc_codes(ansi_coordinates);
+  execute_ANSI_esc_codes(statistics_text);
+}
+
+int8_t check_if_someone_won(int* board[10][19]){
+  int8_t loose = 1;
+  for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if(board[i][j] == 1){
+              loose = 0;
+            }
+        }
+    }
+  return loose;
 }
 
 void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
@@ -183,25 +232,44 @@ void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
   print_ascii_art(ascii_art_bot, "\033[15C");
   draw_board(enemy_board, "\033[28;5H", 0);
 
-  show_statistics("Total Shoots: ", "\033[12;30H");
-  show_statistics("Total Hits: ", "\033[14;30H");
-  show_statistics("Total Miss: ", "\033[16;30H");
+  show_statistics("Total Shoots: ", "\033[12;30H", total_shoots_player);
+  show_statistics("Total Hits: ", "\033[14;30H", total_hits_player);
+  show_statistics("Total Miss: ", "\033[16;30H", total_missess_player);
 
-  show_statistics("Shoot: ", "\033[19;30H");
-  show_statistics("Already Shoot: ", "\033[20;30H");
+  show_input("Shoot: ", "\033[19;30H");
+  //show_statistics("Already Shoot: ", "\033[20;30H", &total_shoots);
 
 
-  show_statistics("Total Shoots: ", "\033[31;30H");
-  show_statistics("Total Hits: ", "\033[33;30H");
-  show_statistics("Total Miss: ", "\033[35;30H");
-  show_statistics("Already Shoot: ", "\033[39;30H");
+  show_statistics("Total Shoots: ", "\033[31;30H", total_shoots_bot);
+  show_statistics("Total Hits: ", "\033[33;30H", total_hits_bot);
+  show_statistics("Total Miss: ", "\033[35;30H", total_missess_bot);
+  //show_statistics("Already Shoot: ", "\033[39;30H");
 
   //execute_ANSI_esc_codes("\033[20;40H");
   //execute_ANSI_esc_codes("hallo");
 
   execute_ANSI_esc_codes(shoot_input_coordiantes);
+  for(int i = 0; i < input_counter; i++){
+    uart_writeByte(input_user[i]);
+  }
 }
 
+
+void increment_stats_array(int stats_array[4]){
+  stats_array[3] += 1;
+    if(stats_array[3] == 10){
+      stats_array[3] = 0;
+      stats_array[2] += 1;
+      if(stats_array[2] == 10){
+        stats_array[2] = 0;
+        stats_array[1] += 1;
+        if(stats_array[1] == 10){
+          stats_array[1] = 0;
+          stats_array[0] += 1;
+        }
+      }
+    }
+}
 
 void draw_board(int board[10][10], char start_pos[], int8_t visible){
   //execute_ANSI_esc_codes("\033[3;5H");
@@ -280,8 +348,7 @@ int main( void )
 
   // range is between 16.000
 
-  int input_user[2]; 
-  int input_counter = 0;
+  
 
   for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
@@ -303,7 +370,6 @@ int main( void )
 
   for(;;){
     uint8_t read_char = uart_readByte();
-
     uint8_t value = 48;
 
 
@@ -316,6 +382,29 @@ int main( void )
       uint8_t value = rng_getRandomValue_immediately();
     } while (value < 48 && value > 60);
     */
+
+
+      
+      if(check_if_someone_won(&enemy_board) == 1){
+        for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            my_board[i][j] = ' ';
+            enemy_board[i][j] = ' ';
+        }
+        }
+        break;   
+      }
+      if(check_if_someone_won(&my_board) == 1){
+        for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            my_board[i][j] = ' ';
+            enemy_board[i][j] = ' ';
+        }
+        }
+        break;
+      }
+      
+
     if(0 != read_char){
       
       //write_board_on_screen(enemy_board, 0);
@@ -326,7 +415,12 @@ int main( void )
 
       if(input_counter < 2 && read_char != 127 && read_char != 13){
         uart_writeByte(read_char);
-        input_user[input_counter] = read_char - 48;
+        if(read_char >= 97 && read_char <= 106){
+          input_user[input_counter] = read_char - 32;
+        }
+        else{
+          input_user[input_counter] = read_char;
+        }
         input_counter++;
       }
       
@@ -344,8 +438,31 @@ int main( void )
       //enter 
       if(read_char == 13){
           if(input_counter >= 2){
+            //check input
             input_counter = 0;
-            enemy_board[input_user[0]][input_user[1]] = 'x';
+            if(input_user[0] >= 'A' && input_user[0] <= 'J' && input_user[1] >= '0' && input_user[1] <= '9'){
+
+              	uart_writeByte(input_user[0]);
+                uart_writeByte('s');
+                uart_writeByte('s');
+                uart_writeByte('s');
+                uart_writeByte('s');
+              
+              
+              if(enemy_board[input_user[1] - 48][input_user[0] - 65] == 1){
+                enemy_board[input_user[1] - 48][input_user[0] - 65] = 'x';
+                increment_stats_array(&total_hits_player);
+                increment_stats_array(&total_shoots_player);
+              }
+              else if(enemy_board[input_user[1] - 48][input_user[0] - 65] == ' '){
+                enemy_board[input_user[1] - 48][input_user[0] - 65] = 'o';
+                increment_stats_array(&total_missess_player);
+                increment_stats_array(&total_shoots_player);
+              }
+              else{
+              }
+              
+            }
 
             execute_ANSI_esc_codes(clear_screen);
             execute_ANSI_esc_codes(set_pos);
@@ -356,21 +473,13 @@ int main( void )
       }
 
 
+
       //execute_ANSI_esc_codes(clear_screen);
       //execute_ANSI_esc_codes(set_pos);
 
       //uart_writeByte(my_board[1][1]);
       //uart_writeByte(my_board[11][11]);
-      
-
-
-
-      if ((int)read_char == 48){
-        
-      }
-      
-      
-      
+    
       //uart_writeByte(rng_getRandomValue_immediately());
 
     }
