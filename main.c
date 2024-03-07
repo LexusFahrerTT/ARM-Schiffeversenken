@@ -43,7 +43,66 @@ int enemy_board[10][10];
 int my_board[10][10];
 
 
-int modulo(uint8_t zaehler, int nenner) {
+void placeShip(int* board[10][10]) {
+    int ship_sizes[] = {2, 3, 4, 5};
+    int num_ships = 0;
+
+    while (num_ships < 4) {
+        int length = ship_sizes[num_ships];
+        int row, col;
+        uint8_t horizontal = rng_getRandomValue_waiting() & 0x01;
+
+        if (horizontal) {
+            row = modulo(rng_getRandomValue_waiting(), 10);
+            col = modulo(rng_getRandomValue_waiting(), 10 - length + 1);
+
+            int i;
+            for (i = col; i < col + length; i++) {
+                if (board[row][i] == 1 || (row > 0 && board[row - 1][i] == 1) || (row < 9 && board[row + 1][i] == 1) ||
+                    (i > 0 && board[row][i - 1] == 1) || (i < 9 && board[row][i + 1] == 1) ||
+                    ((row > 0 && i > 0) && board[row - 1][i - 1] == 1) ||
+                    ((row > 0 && i < 9) && board[row - 1][i + 1] == 1) ||
+                    ((row < 9 && i > 0) && board[row + 1][i - 1] == 1) ||
+                    ((row < 9 && i < 9) && board[row + 1][i + 1] == 1)) {
+                    break;
+                }
+            }
+            if (i != col + length) {
+                continue;
+            }
+
+            for (int i = col; i < col + length; i++) {
+                board[row][i] = 1;
+            }
+        } else {
+            row = modulo(rng_getRandomValue_waiting(), 10 - length + 1);
+            col = modulo(rng_getRandomValue_waiting(), 10);
+
+            int i;
+            for (i = row; i < row + length; i++) {
+                if (board[i][col] == 1 || (col > 0 && board[i][col - 1] == 1) || (col < 9 && board[i][col + 1] == 1) ||
+                    (i > 0 && board[i - 1][col] == 1) || (i < 9 && board[i + 1][col] == 1) ||
+                    ((i > 0 && col > 0) && board[i - 1][col - 1] == 1) ||
+                    ((i > 0 && col < 9) && board[i - 1][col + 1] == 1) ||
+                    ((i < 9 && col > 0) && board[i + 1][col - 1] == 1) ||
+                    ((i < 9 && col < 9) && board[i + 1][col + 1] == 1)) {
+                    break;
+                }
+            }
+            if (i != row + length) {
+                continue;
+            }
+
+            for (int i = row; i < row + length; i++) {
+                board[i][col] = 1;
+            }
+        }
+        num_ships++;
+    }
+}
+
+
+int modulo(int zaehler, int nenner) {
     while (zaehler >= nenner) {
         zaehler -= nenner;
     }
@@ -66,8 +125,8 @@ void Interrupt8_Handler(void){
   //uart_writeByte(modulo(randomNumber1, 10) + 48);
   //uart_writeByte(modulo(randomNumber2, 10) + 48);
 
-  //my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] = 49;
-  my_board[0][0] = modulo(randomNumber2, 10) + 48;
+  my_board[modulo(randomNumber1, 10)][modulo(randomNumber2, 10)] = 'x';
+  //my_board[0][0] = modulo(randomNumber2, 10) + 48;
   //my_board[0][0] = 49;
   //uart_writeByte(my_board[0][0]);
   //timer_init_detailed(5, 30, 19530);
@@ -118,11 +177,11 @@ void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
   clear_screeen();
 
   print_ascii_art(ascii_art_player, "\033[15C");
-  draw_board(my_board, "\033[9;5H");
+  draw_board(my_board, "\033[9;5H", 1);
 
   
   print_ascii_art(ascii_art_bot, "\033[15C");
-  draw_board(enemy_board, "\033[28;5H");
+  draw_board(enemy_board, "\033[28;5H", 0);
 
   show_statistics("Total Shoots: ", "\033[12;30H");
   show_statistics("Total Hits: ", "\033[14;30H");
@@ -144,7 +203,7 @@ void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
 }
 
 
-void draw_board(int board[10][10], char start_pos[]){
+void draw_board(int board[10][10], char start_pos[], int8_t visible){
   //execute_ANSI_esc_codes("\033[3;5H");
   execute_ANSI_esc_codes(start_pos);
     //A-J
@@ -171,7 +230,13 @@ void draw_board(int board[10][10], char start_pos[]){
       uart_writeByte(206);
       uart_writeByte(' ');
       for(int j = 0; j < 10; j++) {
-          uart_writeByte(board[i][j]);
+          if(visible == 0 && board[i][j] == 1){
+            uart_writeByte(' ');
+          }
+          else{
+            uart_writeByte(board[i][j]);
+          }
+          
           uart_writeByte(' ');
       }
       uart_writeByte(206);
@@ -220,10 +285,13 @@ int main( void )
 
   for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
-            my_board[i][j] = 55;
-            enemy_board[i][j] = 65;
+            my_board[i][j] = ' ';
+            enemy_board[i][j] = ' ';
         }
   }
+
+  placeShip(&my_board);
+  placeShip(&enemy_board);
 
   //setup_board(my_board);
   //setup_board(enemy_board);
@@ -276,9 +344,8 @@ int main( void )
       //enter 
       if(read_char == 13){
           if(input_counter >= 2){
-            uart_writeByte('s');
             input_counter = 0;
-            enemy_board[input_user[0]][input_user[1]] = 50;
+            enemy_board[input_user[0]][input_user[1]] = 'x';
 
             execute_ANSI_esc_codes(clear_screen);
             execute_ANSI_esc_codes(set_pos);
