@@ -56,7 +56,13 @@
 			"buildTarget": {"visibility": "hidden"}
 		},
 		"files.associations": {
-			"timer.h": "c"
+			"timer.h": "c",
+			"random.h": "c",
+			"uart.h": "c",
+			"register_access.h": "c",
+			"maingame.h": "c",
+			"stdint.h": "c",
+			"startscreen.h": "c"
 		}
 
 	},

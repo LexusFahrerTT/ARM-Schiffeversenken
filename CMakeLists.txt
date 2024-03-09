@@ -29,7 +29,24 @@ target_sources(
     timer.c
 
     uart.h
-    uart.c )
+    uart.c
+    
+    maingame.h
+    maingame.c
+    
+
+    utils.h
+    utils.c
+
+    startscreen.h
+    startscreen.c
+
+    endscreen.h
+    endscreen.c
+
+    game.c
+    game.h
+    )
 
 target_link_options(
   testApp
