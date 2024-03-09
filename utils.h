@@ -14,7 +14,7 @@
 #define UTILS_H
 
 /**
- * @brief Methode, die die modulo funktionalität simuliert
+ * @brief Methode, die die modulo funktionalität stimuliert
  * @param zaehler ist der Anfangswert
  * @param nenner ist der Wert, durchwelchen der Anfangswert diviert bzw "moduliert" wird ;)
  * 

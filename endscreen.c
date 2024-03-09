@@ -23,7 +23,13 @@ void end_screen(uint8_t read_char){
 }
 
 
-void draw_you_lost(int* player_stats[4], int* bot_stats[4]) {
+/**
+ * @brief Methode, um den Loser End Screen darzustellen
+ * 
+ * @param player_stats ist ein array mit allen Stats Arrays des Spielers
+ * @param bot_stats ist ein array mit allen Stats Arrays des Bots
+ */
+void draw_you_lost(int* player_stats[3], int* bot_stats[3]) {
     char *ascii_art = 
         "                        __   __            _           _     _ \n"
         "                       \\ \\ / /           | |         | |   | |\n"
@@ -43,9 +49,27 @@ void draw_you_lost(int* player_stats[4], int* bot_stats[4]) {
         "                                                                              \n"
         "                                                                               \n";
     print_ascii_art(ascii_art, "\033[15C");
+
+
+    execute_ANSI_or_print_text("Player Stats \n\n\n");
+    show_statistics("Total Shoots: ", "\033[21;16H", player_stats[0]);
+    show_statistics("Total Hits: ", "\033[22;16H", player_stats[1]);
+    show_statistics("Total Miss: ", "\033[23;16H", player_stats[2]);
+
+    execute_ANSI_or_print_text("\n \n \n \n \033[13C Bot Stats");
+    show_statistics("Total Shoots: ", "\033[29;16H", bot_stats[0]);
+    show_statistics("Total Hits: ", "\033[30;16H", bot_stats[1]);
+    show_statistics("Total Miss: ", "\033[31;16H", bot_stats[2]);
 }
 
-void draw_you_won(int* player_stats[4], int* bot_stats[4]) {
+
+/**
+ * @brief Methode, um den Win End Screen darzustellen
+ * 
+ * @param player_stats ist ein array mit allen Stats Arrays des Spielers
+ * @param bot_stats ist ein array mit allen Stats Arrays des Bots
+ */
+void draw_you_won(int* player_stats[3], int* bot_stats[3]) {
     char *ascii_art =
         "                    __   __                                  _ \n"
         "                   \\ \\ / /                                 | |\n"
@@ -65,4 +89,14 @@ void draw_you_won(int* player_stats[4], int* bot_stats[4]) {
         "                                                                               \n";
 
     print_ascii_art(ascii_art, "\033[15C");
+
+    execute_ANSI_or_print_text("Player Stats \n");
+    show_statistics("Total Shoots: ", "\033[20;16H", player_stats[0]);
+    show_statistics("Total Hits: ", "\033[21;16H", player_stats[1]);
+    show_statistics("Total Miss: ", "\033[22;16H", player_stats[2]);
+
+    execute_ANSI_or_print_text("\n \n \n \n \033[13C Bot Stats");
+    show_statistics("Total Shoots: ", "\033[28;16H", bot_stats[0]);
+    show_statistics("Total Hits: ", "\033[29;16H", bot_stats[1]);
+    show_statistics("Total Miss: ", "\033[30;16H", bot_stats[2]);
 }

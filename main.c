@@ -29,25 +29,10 @@ int main( void )
   uart_init();
   rng_init();
   
-  // 5 seconds
-  //timer_init_detailed(28, 30, 19730);
-
-  // 4 seconds
-  //timer_init_detailed(28, 30, 15730);
-
-  // 3 seconds
-  //timer_init_detailed(28, 30, 11730);
-
-  // 2 seconds
-  //timer_init_detailed(28, 30, 7730);
-
-  // 1 second
-  //timer_init_detailed(28, 30, 3730);
-
-  // range is between 16.000
-
-
+  //show start screen
   draw_start_screen();
+
+  //main game loop
   for(;;){
     uint8_t read_char = uart_readByte();
 

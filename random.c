@@ -49,13 +49,10 @@ uint8_t rng_getRandomValue_immediately() {
  */
 uint8_t rng_getRandomValue_waiting() {
 
-	// TODO:
-	// Implement a 'waiting' here, if needed
 	uint32_t randomValue = register_read( (RNG_BASE_ADDRESS + RNG_VALUE) );
 	while (randomValue == register_read( (RNG_BASE_ADDRESS + RNG_VALUE) ))
 	{
 	}
 	
-	// for now, return 0
 	return register_read( (RNG_BASE_ADDRESS + RNG_VALUE) );
 }

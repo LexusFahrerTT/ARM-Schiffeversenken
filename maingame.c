@@ -11,6 +11,9 @@
 #include "utils.h"
 #include "game.h"
 
+/**
+ * @brief ASCII Art Spieler
+ */
 char ascii_art_player[] = 
 "  ____  _                       \n"
 " |  _ \\| | __ _ _   _  ___ _ __ \n"
@@ -19,7 +22,9 @@ char ascii_art_player[] =
 " |_|   |_|\\__,_|\\__, |\\___|_|   \n"
 "                |___/            \n";
 
-
+/**
+ * @brief ASCII Art Bot
+ */
 char ascii_art_bot[] = 
         "   ____ ____  _   _    ____        _   \n"
         "  / ___|  _ \\| | | |  | __ )  ___ | |_ \n"
@@ -53,6 +58,10 @@ int input_counter = 0;
  */
 int input_user[2];
 
+
+/*
+* Statsitics Arrays für Spieler und Bot
+*/
 int total_shoots_player[4] = {0, 0, 0, 0};
 int total_hits_player[4] = {0, 0, 0, 0};
 int total_missess_player[4] = {0, 0, 0, 0};
@@ -64,7 +73,7 @@ int total_missess_bot[4] = {0, 0, 0, 0};
 /**
  * @brief Array, mit pointer zu den stats vom Spieler
  */
-int* player_stats[4] = {
+int* player_stats[3] = {
     total_shoots_player,
     total_hits_player,
     total_missess_player
@@ -73,7 +82,7 @@ int* player_stats[4] = {
 /**
  * @brief Array, mit pointer zu den stats vom Gegner Bot
  */
-int* bot_stats[4] = {
+int* bot_stats[3] = {
     total_shoots_bot,
     total_hits_bot,
     total_missess_bot
@@ -136,7 +145,6 @@ void Interrupt8_Handler(void){
 
   //neueingestellter timer starten
   timer_init_detailed(28, 30, time_offset);
-  //timer_init_detailed(8, 30, 5000);
 
   //draw screen zum schluss hihi
   draw_main_game_screen(&my_board, &enemy_board);
@@ -163,6 +171,8 @@ int8_t check_if_someone_won(int* board[10][10]){
   int8_t loose = 1;
   for (int i = 0; i < 10; i++) {
     for (int j = 0; j < 10; j++) {
+
+        // falls ein Schiffstück noch exisitieren sollte, ändere die variable loose um
         if(board[i][j] == 1){
           loose = 0;
         }

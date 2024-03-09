@@ -51,15 +51,6 @@ void setup_main_game(){
     setup_board(&my_board);
     setup_board(&enemy_board);
 
-
-    // muss weg
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            enemy_board[i][j] = ' ';
-        }
-    }
-
-    enemy_board[0][0] = 1;
 }
 
 /**

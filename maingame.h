@@ -11,7 +11,14 @@
 #include "utils.h"
 #include "game.h"
 
+/**
+ * @brief ASCII Art Spieler
+ */
 extern char ascii_art_player[];
+
+/**
+ * @brief ASCII Art Bot
+ */
 extern char ascii_art_bot[];
 
 extern char set_pos[];
@@ -54,13 +61,13 @@ extern int total_missess_bot[4];
 /**
  * @brief Array, mit pointer zu den stats vom Spieler
  */
-extern int* player_stats[4];
+extern int* player_stats[3];
 
 
 /**
  * @brief Array, mit pointer zu den stats vom Gegner Bot
  */
-extern int* bot_stats[4];
+extern int* bot_stats[3];
 
 /**
  * @brief Wert sagt auf, welche Message dann angezeigt wird

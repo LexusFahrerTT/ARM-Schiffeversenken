@@ -3,8 +3,8 @@
  * @brief Header-Datei für das "komplette"  Spiel bzw. Varaiblen und Methode, die im gesamten SPiel benötigt werden
  */
 
-#ifndef MAINGAME_H
-#define MAINGAME_H
+#ifndef GAME_H
+#define GAME_H
 
 #include <stdint.h>
 
@@ -35,4 +35,4 @@ void setup_main_game();
  */
 void placeShip(int* board[10][10]);
 
-#endif /* MAINGAME_H */
+#endif /* GAME_H */
