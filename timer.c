@@ -67,6 +67,9 @@ void timer_init() {
 	timer_init_detailed(15, 3, 1953);
 }
 
+void timer_disable(){
+	register_write((TIMER0_BASE_ADDRESS + TIMER_STOP), TIMER_TASK_STOP);
+}
 
 void timer_clearCompareEvent() {
 
