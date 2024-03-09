@@ -1,0 +1,155 @@
+\doxysection{utils.\+c File Reference}
+\hypertarget{utils_8c}{}\label{utils_8c}\index{utils.c@{utils.c}}
+
+
+Source-\/\+Datei für Utils methoden, werden benötigt in jedem Szenario (Start, Game, End)  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}register\+\_\+access.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}random.\+h"{}}\newline
+{\ttfamily \#include "{}timer.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{utils_8c_a1ead374a3a9b70ca387c47f8c12fc651}{modulo}} (int zaehler, int nenner)
+\begin{DoxyCompactList}\small\item\em Methode, die die modulo funktionalität stimuliert. \end{DoxyCompactList}\item 
+\Hypertarget{utils_8c_abc40cd622f423abf44084c8f8595f57f}\label{utils_8c_abc40cd622f423abf44084c8f8595f57f} 
+void {\bfseries clear\+\_\+screen} (void)
+\begin{DoxyCompactList}\small\item\em Methode, um den Screen zu clearen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a1bf7918bfe46d71d8c81383dfe743b0e}{execute\+\_\+\+ANSI\+\_\+or\+\_\+print\+\_\+text}} (char esc\+\_\+code\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, ANSI auszuführen oder Zeichenkette auf den Screen zu printen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_ac45cc277387a1ac267fbca52f5bdc76e}{print\+\_\+ascii\+\_\+art}} (char ascii\+\_\+art\mbox{[}$\,$\mbox{]}, char esc\+\_\+code\+\_\+move\+\_\+right\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um ein Ascii Kunstwert dazustellten. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a21a054dfedc105b72cf23e248c01c79e}{print\+\_\+values\+\_\+array}} (int values\mbox{[}4\mbox{]}, char column\+\_\+pos\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um stats array auf den Screen zu printen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a9b342a8310f546ad7f133733b0dfe111}{show\+\_\+statistics}} (char statistics\+\_\+text\mbox{[}$\,$\mbox{]}, char ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]}, int values\mbox{[}4\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um stats auf den Screen zu zeichnen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_ade68fe3c721f7c0256b6c41c44c6563a}{increment\+\_\+stats\+\_\+array}} (int stats\+\_\+array\mbox{[}4\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um ein Stats Array hochzuzählen von den Werten her. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a4c877aa55e536f9ad2e345640220002f}{reset\+\_\+stats\+\_\+array}} (int stats\+\_\+array\mbox{[}4\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um ein Stats Array hzu resetten. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source-\/\+Datei für Utils methoden, werden benötigt in jedem Szenario (Start, Game, End) 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8c_a1bf7918bfe46d71d8c81383dfe743b0e}\label{utils_8c_a1bf7918bfe46d71d8c81383dfe743b0e} 
+\index{utils.c@{utils.c}!execute\_ANSI\_or\_print\_text@{execute\_ANSI\_or\_print\_text}}
+\index{execute\_ANSI\_or\_print\_text@{execute\_ANSI\_or\_print\_text}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{execute\_ANSI\_or\_print\_text()}{execute\_ANSI\_or\_print\_text()}}
+{\footnotesize\ttfamily void execute\+\_\+\+ANSI\+\_\+or\+\_\+print\+\_\+text (\begin{DoxyParamCaption}\item[{char}]{esc\+\_\+code\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, ANSI auszuführen oder Zeichenkette auf den Screen zu printen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em esc\+\_\+code} & ist der code bzw zeichenkette "{}\+String"{} \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_ade68fe3c721f7c0256b6c41c44c6563a}\label{utils_8c_ade68fe3c721f7c0256b6c41c44c6563a} 
+\index{utils.c@{utils.c}!increment\_stats\_array@{increment\_stats\_array}}
+\index{increment\_stats\_array@{increment\_stats\_array}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{increment\_stats\_array()}{increment\_stats\_array()}}
+{\footnotesize\ttfamily void increment\+\_\+stats\+\_\+array (\begin{DoxyParamCaption}\item[{int}]{stats\+\_\+array\mbox{[}4\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um ein Stats Array hochzuzählen von den Werten her. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stats\+\_\+array} & Stats array, welches hochgezählt wird \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_a1ead374a3a9b70ca387c47f8c12fc651}\label{utils_8c_a1ead374a3a9b70ca387c47f8c12fc651} 
+\index{utils.c@{utils.c}!modulo@{modulo}}
+\index{modulo@{modulo}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{modulo()}{modulo()}}
+{\footnotesize\ttfamily int modulo (\begin{DoxyParamCaption}\item[{int}]{zaehler,  }\item[{int}]{nenner }\end{DoxyParamCaption})}
+
+
+
+Methode, die die modulo funktionalität stimuliert. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em zaehler} & ist der Anfangswert \\
+\hline
+{\em nenner} & ist der Wert, durchwelchen der Anfangswert diviert bzw "{}moduliert"{} wird ;) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_ac45cc277387a1ac267fbca52f5bdc76e}\label{utils_8c_ac45cc277387a1ac267fbca52f5bdc76e} 
+\index{utils.c@{utils.c}!print\_ascii\_art@{print\_ascii\_art}}
+\index{print\_ascii\_art@{print\_ascii\_art}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{print\_ascii\_art()}{print\_ascii\_art()}}
+{\footnotesize\ttfamily void print\+\_\+ascii\+\_\+art (\begin{DoxyParamCaption}\item[{char}]{ascii\+\_\+art\mbox{[}$\,$\mbox{]},  }\item[{char}]{esc\+\_\+code\+\_\+move\+\_\+right\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um ein Ascii Kunstwert dazustellten. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascii\+\_\+art} & ist der code bzw zeichenkette "{}\+String"{} \\
+\hline
+{\em esc\+\_\+code\+\_\+move\+\_\+right} & ist der Ansi Code, um das Kunstwerk nach RECHTS zu verschieben \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_a21a054dfedc105b72cf23e248c01c79e}\label{utils_8c_a21a054dfedc105b72cf23e248c01c79e} 
+\index{utils.c@{utils.c}!print\_values\_array@{print\_values\_array}}
+\index{print\_values\_array@{print\_values\_array}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{print\_values\_array()}{print\_values\_array()}}
+{\footnotesize\ttfamily void print\+\_\+values\+\_\+array (\begin{DoxyParamCaption}\item[{int}]{values\mbox{[}4\mbox{]},  }\item[{char}]{column\+\_\+pos\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um stats array auf den Screen zu printen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em values} & ist das Array mit den Werten \\
+\hline
+{\em column\+\_\+pos} & Position, wo sich die werte befinden sollen \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_a4c877aa55e536f9ad2e345640220002f}\label{utils_8c_a4c877aa55e536f9ad2e345640220002f} 
+\index{utils.c@{utils.c}!reset\_stats\_array@{reset\_stats\_array}}
+\index{reset\_stats\_array@{reset\_stats\_array}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{reset\_stats\_array()}{reset\_stats\_array()}}
+{\footnotesize\ttfamily void reset\+\_\+stats\+\_\+array (\begin{DoxyParamCaption}\item[{int}]{stats\+\_\+array\mbox{[}4\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um ein Stats Array hzu resetten. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stats\+\_\+array} & Stats array, welches resettet wird \\
+\hline
+\end{DoxyParams}
+\Hypertarget{utils_8c_a9b342a8310f546ad7f133733b0dfe111}\label{utils_8c_a9b342a8310f546ad7f133733b0dfe111} 
+\index{utils.c@{utils.c}!show\_statistics@{show\_statistics}}
+\index{show\_statistics@{show\_statistics}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{show\_statistics()}{show\_statistics()}}
+{\footnotesize\ttfamily void show\+\_\+statistics (\begin{DoxyParamCaption}\item[{char}]{statistics\+\_\+text\mbox{[}$\,$\mbox{]},  }\item[{char}]{ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]},  }\item[{int}]{values\mbox{[}4\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um stats auf den Screen zu zeichnen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em statistics\+\_\+text} & Einführender Text \\
+\hline
+{\em ansi\+\_\+coordinates} & Position, wo sich die Stats befinden sollen \\
+\hline
+{\em values} & Werte, die dargestellt werden sollen \\
+\hline
+\end{DoxyParams}

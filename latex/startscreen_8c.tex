@@ -1,0 +1,45 @@
+\doxysection{startscreen.\+c File Reference}
+\hypertarget{startscreen_8c}{}\label{startscreen_8c}\index{startscreen.c@{startscreen.c}}
+
+
+Source-\/\+Datei für den Startscreen.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}register\+\_\+access.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}random.\+h"{}}\newline
+{\ttfamily \#include "{}timer.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}maingame.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{startscreen_8c_a51cfac9831ad25b4bc18891c7a315acd}{start\+\_\+screen}} (uint8\+\_\+t read\+\_\+char)
+\begin{DoxyCompactList}\small\item\em Methode, die das Spiel starte, wenn man S oder s eingibt. \end{DoxyCompactList}\item 
+\Hypertarget{startscreen_8c_a3e82d2d8143755f569bf74812b8c4f4a}\label{startscreen_8c_a3e82d2d8143755f569bf74812b8c4f4a} 
+void {\bfseries draw\+\_\+start\+\_\+screen} ()
+\begin{DoxyCompactList}\small\item\em Methode, die den Starscreen drawt. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source-\/\+Datei für den Startscreen. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{startscreen_8c_a51cfac9831ad25b4bc18891c7a315acd}\label{startscreen_8c_a51cfac9831ad25b4bc18891c7a315acd} 
+\index{startscreen.c@{startscreen.c}!start\_screen@{start\_screen}}
+\index{start\_screen@{start\_screen}!startscreen.c@{startscreen.c}}
+\doxysubsubsection{\texorpdfstring{start\_screen()}{start\_screen()}}
+{\footnotesize\ttfamily void start\+\_\+screen (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{read\+\_\+char }\end{DoxyParamCaption})}
+
+
+
+Methode, die das Spiel starte, wenn man S oder s eingibt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em read\+\_\+char} & ist das eingelesene vom SPieler \\
+\hline
+\end{DoxyParams}

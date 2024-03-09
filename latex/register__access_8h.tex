@@ -1,0 +1,66 @@
+\doxysection{register\+\_\+access.\+h File Reference}
+\hypertarget{register__access_8h}{}\label{register__access_8h}\index{register\_access.h@{register\_access.h}}
+
+
+Generic Register-\/\+Access.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{register__access_8h_a95fe6fba2bc246f49af61e076d1153fe}{register\+\_\+write}} (uint32\+\_\+t address, uint32\+\_\+t value)
+\begin{DoxyCompactList}\small\item\em Write Value to Register. \end{DoxyCompactList}\item 
+uint32\+\_\+t \mbox{\hyperlink{register__access_8h_a622715efc93f28ec149d81b793eef17b}{register\+\_\+read}} (uint32\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em Read from Register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Generic Register-\/\+Access. 
+
+\begin{DoxyCopyright}{Copyright}
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.\+0. If a copy of the MPL was not distributed with this file, You can obtain one at \href{http://mozilla.org/MPL/2.0/}{\texttt{ http\+://mozilla.\+org/\+MPL/2.\+0/}}.
+\end{DoxyCopyright}
+\begin{DoxyAuthor}{Author}
+Thomas Vogt 
+
+Sven Reis 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{register__access_8h_a622715efc93f28ec149d81b793eef17b}\label{register__access_8h_a622715efc93f28ec149d81b793eef17b} 
+\index{register\_access.h@{register\_access.h}!register\_read@{register\_read}}
+\index{register\_read@{register\_read}!register\_access.h@{register\_access.h}}
+\doxysubsubsection{\texorpdfstring{register\_read()}{register\_read()}}
+{\footnotesize\ttfamily uint32\+\_\+t register\+\_\+read (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Read from Register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em address} & Register Address\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Register Value 
+\end{DoxyReturn}
+\Hypertarget{register__access_8h_a95fe6fba2bc246f49af61e076d1153fe}\label{register__access_8h_a95fe6fba2bc246f49af61e076d1153fe} 
+\index{register\_access.h@{register\_access.h}!register\_write@{register\_write}}
+\index{register\_write@{register\_write}!register\_access.h@{register\_access.h}}
+\doxysubsubsection{\texorpdfstring{register\_write()}{register\_write()}}
+{\footnotesize\ttfamily void register\+\_\+write (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{address,  }\item[{uint32\+\_\+t}]{value }\end{DoxyParamCaption})}
+
+
+
+Write Value to Register. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em address} & Register Address \\
+\hline
+\mbox{\texttt{ in}}  & {\em value} & Register Value \\
+\hline
+\end{DoxyParams}

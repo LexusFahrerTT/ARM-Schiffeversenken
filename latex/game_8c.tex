@@ -1,0 +1,63 @@
+\doxysection{game.\+c File Reference}
+\hypertarget{game_8c}{}\label{game_8c}\index{game.c@{game.c}}
+
+
+Source-\/\+Datei für das "{}komplette"{} Spiel bzw. Varaiblen und Methode, die im gesamten SPiel benötigt werden.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}maingame.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game_8c_a68428b88d2459a41e3e6cad3c15fd0f6}{setup\+\_\+board}} (int \texorpdfstring{$\ast$}{*}board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um das Board in einen Anfangszutsandt zu versetzen. \end{DoxyCompactList}\item 
+\Hypertarget{game_8c_ad7c0ba4acc7b0dbf85cbdc14e906e1be}\label{game_8c_ad7c0ba4acc7b0dbf85cbdc14e906e1be} 
+void {\bfseries setup\+\_\+main\+\_\+game} ()
+\begin{DoxyCompactList}\small\item\em Methode, um das Hauptspiel in den Anfangszusatdn zu versetztzen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game_8c_a0cf2f48af68dfa6e5178038145510db1}{place\+Ship}} (int \texorpdfstring{$\ast$}{*}board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um ein Baord mit Schiffen zu versorgen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{game_8c_ac6866dd8b08583215e8709d936ad4951}\label{game_8c_ac6866dd8b08583215e8709d936ad4951} 
+int {\bfseries game\+\_\+mode} = 0
+\begin{DoxyCompactList}\small\item\em game mode, welches aussagt, in welchem State sich das Spiel befindet game mode = 0 \texorpdfstring{$\vert$}{|} start game mode = 1 \texorpdfstring{$\vert$}{|} maingame game mode = 2,3 \texorpdfstring{$\vert$}{|} end \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source-\/\+Datei für das "{}komplette"{} Spiel bzw. Varaiblen und Methode, die im gesamten SPiel benötigt werden. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game_8c_a0cf2f48af68dfa6e5178038145510db1}\label{game_8c_a0cf2f48af68dfa6e5178038145510db1} 
+\index{game.c@{game.c}!placeShip@{placeShip}}
+\index{placeShip@{placeShip}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{placeShip()}{placeShip()}}
+{\footnotesize\ttfamily void place\+Ship (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um ein Baord mit Schiffen zu versorgen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & ist das jeweilige übergebene Board \\
+\hline
+\end{DoxyParams}
+\Hypertarget{game_8c_a68428b88d2459a41e3e6cad3c15fd0f6}\label{game_8c_a68428b88d2459a41e3e6cad3c15fd0f6} 
+\index{game.c@{game.c}!setup\_board@{setup\_board}}
+\index{setup\_board@{setup\_board}!game.c@{game.c}}
+\doxysubsubsection{\texorpdfstring{setup\_board()}{setup\_board()}}
+{\footnotesize\ttfamily void setup\+\_\+board (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um das Board in einen Anfangszutsandt zu versetzen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & ist das jeweilige übergebene Board \\
+\hline
+\end{DoxyParams}

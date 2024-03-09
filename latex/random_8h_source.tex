@@ -1,0 +1,43 @@
+\doxysection{random.\+h}
+\hypertarget{random_8h_source}{}\label{random_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Definitions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Base\ Address\ (Instance)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ RNG\_BASE\_ADDRESS\ \ 0x4000D000}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Register\ Offsets\ (from\ Table\ 174,\ page\ 115)}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Tasks:}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ RNG\_START\ \ \ \ \ \ \ \ \ 0x000\ \ \ \ }\textcolor{comment}{//\ Task\ starting\ the\ random\ number\ generator}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ RNG\_STOP\ \ \ \ \ \ \ \ \ \ 0x004\ \ \ \ }\textcolor{comment}{//\ Task\ stopping\ the\ random\ number\ generator}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Events:}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ RNG\_VALRDY\ \ \ \ \ \ \ \ 0x100\ \ \ \ }\textcolor{comment}{//\ Event\ being\ generated\ for\ every\ new\ random\ number\ written\ to\ the\ VALUE\ register}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Registers:}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ RNG\_SHORTS\ \ \ \ \ \ \ \ 0x200\ \ \ \ }\textcolor{comment}{//\ Shortcut\ register}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ RNG\_INTEN\ \ \ \ \ \ \ \ \ 0x300\ \ \ \ }\textcolor{comment}{//\ Enable\ or\ disable\ interrupt}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ RNG\_INTENSET\ \ \ \ \ \ 0x304\ \ \ \ }\textcolor{comment}{//\ Enable\ interrupt}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ RNG\_INTENCLR\ \ \ \ \ \ 0x308\ \ \ \ }\textcolor{comment}{//\ Disable\ interrupt}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ RNG\_CONFIG\ \ \ \ \ \ \ \ 0x504\ \ \ \ }\textcolor{comment}{//\ Configuration\ register}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ RNG\_VALUE\ \ \ \ \ \ \ \ \ 0x508\ \ \ \ }\textcolor{comment}{//\ Output\ random\ number}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Other:}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ RNG\_TASK\_START\ \ \ \ \ \ \ \ 1\ \ \ \ }\textcolor{comment}{//\ Value\ for\ starting\ a\ Task}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ RNG\_EVENT\_TRIGGER\ \ \ \ \ 1\ \ \ \ }\textcolor{comment}{//\ Value\ for\ setting/starting\ an\ Event}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ RNG\_EVENT\_CLEAR\ \ \ \ \ \ \ 0\ \ \ \ }\textcolor{comment}{//\ Value\ for\ clearing/stopping\ an\ Event}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{comment}{//\ C\ -\/\ Functions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ rng\_init();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ uint8\_t\ rng\_getRandomValue\_immediately();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00053\ uint8\_t\ rng\_getRandomValue\_waiting();}
+
+\end{DoxyCode}

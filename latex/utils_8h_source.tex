@@ -1,0 +1,31 @@
+\doxysection{utils.\+h}
+\hypertarget{utils_8h_source}{}\label{utils_8h_source}\mbox{\hyperlink{utils_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{register__access_8h}{register\_access.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}uart.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}random.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}timer.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ UTILS\_H}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ UTILS\_H}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{utils_8h_a1ead374a3a9b70ca387c47f8c12fc651}{modulo}}(\textcolor{keywordtype}{int}\ zaehler,\ \textcolor{keywordtype}{int}\ nenner);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_abc40cd622f423abf44084c8f8595f57f}{clear\_screen}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a1bf7918bfe46d71d8c81383dfe743b0e}{execute\_ANSI\_or\_print\_text}}(\textcolor{keywordtype}{char}\ esc\_code[]);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_ac45cc277387a1ac267fbca52f5bdc76e}{print\_ascii\_art}}(\textcolor{keywordtype}{char}\ ascii\_art[],\ \textcolor{keywordtype}{char}\ esc\_code\_move\_right[]);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a21a054dfedc105b72cf23e248c01c79e}{print\_values\_array}}(\textcolor{keywordtype}{int}\ values[4],\ \textcolor{keywordtype}{char}\ column\_pos[]);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00060\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a9b342a8310f546ad7f133733b0dfe111}{show\_statistics}}(\textcolor{keywordtype}{char}\ statistics\_text[],\ \textcolor{keywordtype}{char}\ ansi\_coordinates[],\ \textcolor{keywordtype}{int}\ values[4]);}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_ade68fe3c721f7c0256b6c41c44c6563a}{increment\_stats\_array}}(\textcolor{keywordtype}{int}\ stats\_array[4]);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{utils_8h_a4c877aa55e536f9ad2e345640220002f}{reset\_stats\_array}}(\textcolor{keywordtype}{int}\ stats\_array[4]);}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ UTILS\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,55 @@
+\doxysection{uart.\+h}
+\hypertarget{uart_8h_source}{}\label{uart_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Definitions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Base\ Address\ (Instance)}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ UART\_BASE\_ADDRESS\ \ 0x40002000}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ Register\ Offsets\ (from\ Table\ 275,\ page\ 154)}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Tasks:}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ UART\_STARTRX\ \ \ \ \ \ \ 0x000\ \ \ \ }\textcolor{comment}{//\ Start\ UART\ receiver}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ UART\_STOPRX\ \ \ \ \ \ \ \ 0x004\ \ \ \ }\textcolor{comment}{//\ Stop\ UART\ receiver}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ UART\_STARTTX\ \ \ \ \ \ \ 0x008\ \ \ \ }\textcolor{comment}{//\ Start\ UART\ transmitter}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ UART\_STOPTX\ \ \ \ \ \ \ \ 0x00C\ \ \ \ }\textcolor{comment}{//\ Stop\ UART\ transmitter}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ UART\_SUSPEND\ \ \ \ \ \ \ 0x01C\ \ \ \ }\textcolor{comment}{//\ Suspend\ UART}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ Events:}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ UART\_CTS\ \ \ \ \ \ \ \ \ \ \ 0x100\ \ \ \ }\textcolor{comment}{//\ CTS\ is\ activated\ (set\ low).\ Clear\ To\ Send.}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ UART\_NCTS\ \ \ \ \ \ \ \ \ \ 0x104\ \ \ \ }\textcolor{comment}{//\ CTS\ is\ deactivated\ (set\ high).\ Not\ Clear\ To\ Send.}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ UART\_RXDRDY\ \ \ \ \ \ \ \ 0x108\ \ \ \ }\textcolor{comment}{//\ Data\ received\ in\ RXD}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ UART\_TXDRDY\ \ \ \ \ \ \ \ 0x11C\ \ \ \ }\textcolor{comment}{//\ Data\ sent\ from\ TXD}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ UART\_ERROR\ \ \ \ \ \ \ \ \ 0x124\ \ \ \ }\textcolor{comment}{//\ Error\ detected}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ UART\_RXTO\ \ \ \ \ \ \ \ \ \ 0x144\ \ \ \ }\textcolor{comment}{//\ Receiver\ timeout}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ Registers:}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ UART\_INTEN\ \ \ \ \ \ \ \ \ 0x300\ \ \ \ }\textcolor{comment}{//\ Enable\ or\ disable\ interrupt}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#define\ UART\_INTENSET\ \ \ \ \ \ 0x304\ \ \ \ }\textcolor{comment}{//\ Enable\ interrupt}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ UART\_INTENCLR\ \ \ \ \ \ 0x308\ \ \ \ }\textcolor{comment}{//\ Disable\ interrupt}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ UART\_ERRORSRC\ \ \ \ \ \ 0x480\ \ \ \ }\textcolor{comment}{//\ Error\ source}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ UART\_ENABLE\ \ \ \ \ \ \ \ 0x500\ \ \ \ }\textcolor{comment}{//\ Enable\ UART}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ UART\_PSELRTS\ \ \ \ \ \ \ 0x508\ \ \ \ }\textcolor{comment}{//\ Pin\ select\ for\ RTS}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ UART\_PSELTXD\ \ \ \ \ \ \ 0x50C\ \ \ \ }\textcolor{comment}{//\ Pin\ select\ for\ TXD}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ UART\_PSELCTS\ \ \ \ \ \ \ 0x510\ \ \ \ }\textcolor{comment}{//\ Pin\ select\ for\ CTS}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#define\ UART\_PSELRXD\ \ \ \ \ \ \ 0x514\ \ \ \ }\textcolor{comment}{//\ Pin\ select\ for\ RXD}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ UART\_RXD\ \ \ \ \ \ \ \ \ \ \ 0x518\ \ \ \ }\textcolor{comment}{//\ RXD\ register}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ UART\_TXD\ \ \ \ \ \ \ \ \ \ \ 0x51C\ \ \ \ }\textcolor{comment}{//\ TXD\ register}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ UART\_BAUDRATE\ \ \ \ \ \ 0x524\ \ \ \ }\textcolor{comment}{//\ Baud\ rate}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#define\ UART\_CONFIG\ \ \ \ \ \ \ \ 0x56C\ \ \ \ }\textcolor{comment}{//\ Configuration\ of\ parity\ and\ hardware\ flow\ control}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ Other:}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#define\ UART\_TASK\_START\ \ \ \ \ \ \ \ 1\ \ \ \ }\textcolor{comment}{//\ Value\ for\ starting\ a\ Task}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ UART\_EVENT\_TRIGGER\ \ \ \ \ 1\ \ \ \ }\textcolor{comment}{//\ Value\ for\ setting/starting\ an\ Event}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ UART\_EVENT\_CLEAR\ \ \ \ \ \ \ 0\ \ \ \ }\textcolor{comment}{//\ Value\ for\ clearing/stopping\ an\ Event}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{comment}{//\ C\ Function\ Definitions\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ uart\_init();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ uart\_writeByte(uint8\_t\ data);}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00064\ uint8\_t\ uart\_readByte();}
+
+\end{DoxyCode}

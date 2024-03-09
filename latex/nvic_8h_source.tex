@@ -1,0 +1,43 @@
+\doxysection{nvic.\+h}
+\hypertarget{nvic_8h_source}{}\label{nvic_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ Registers\ from\ NVIC\ -\/\ Cortex-\/M0\ peripheral}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ These\ are\ to\ activate\ and\ debug\ Interrupts}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Details\ on\ Chapter\ 4.2\ Nested\ Vectored\ Interrupt\ Controller\ (Page\ 109)}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_00\ \ \ 0xE000E100\ }\textcolor{comment}{//\ \ 1\ -\/\ Reset}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_01\ \ \ 0xE000E104\ }\textcolor{comment}{//\ \ 2\ -\/\ NMI}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_02\ \ \ 0xE000E108\ }\textcolor{comment}{//\ \ 3\ -\/\ Hard-\/Fault}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_03\ \ \ 0xE000E10C\ }\textcolor{comment}{//\ \ 4\ -\/\ MPU\ /\ MEM-\/Manage}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_04\ \ \ 0xE000E110\ }\textcolor{comment}{//\ \ 5\ -\/\ BUS-\/Fault}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_05\ \ \ 0xE000E114\ }\textcolor{comment}{//\ \ 6\ -\/\ Usage-\/Fault}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_06\ \ \ 0xE000E118\ }\textcolor{comment}{//\ \ 7\ -\/\ Reserved}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_07\ \ \ 0xE000E11C\ }\textcolor{comment}{//\ \ 8\ -\/\ Reserved}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_08\ \ \ 0xE000E120\ }\textcolor{comment}{//\ \ 9\ -\/\ Reserved}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_09\ \ \ 0xE000E124\ }\textcolor{comment}{//\ 10\ -\/\ Reserved}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_10\ \ \ 0xE000E128\ }\textcolor{comment}{//\ 11\ -\/\ SVCall}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_11\ \ \ 0xE000E12C\ }\textcolor{comment}{//\ 12\ -\/\ Debug\ Monitor}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_12\ \ \ 0xE000E130\ }\textcolor{comment}{//\ 13\ -\/\ Reserved}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_13\ \ \ 0xE000E134\ }\textcolor{comment}{//\ 14\ -\/\ PendSV}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_14\ \ \ 0xE000E138\ }\textcolor{comment}{//\ 15\ -\/\ SysTick}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\_15\ \ \ 0xE000E13C\ }\textcolor{comment}{//\ 16\ -\/\ External\ 0}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ Interrupt\_Set\_Enable\ \ \ \ \ \ 0xE000E100\ }\textcolor{comment}{//\ [32...0]\ Interrupt}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ Interrupt\_ICPR\ \ \ \ \ \ \ \ \ \ \ \ 0xE000E280\ }\textcolor{comment}{//\ Interrupt\ Clear-\/pending\ Register\ (on\ page\ 4-\/6)}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ Interrupt\_ID8\ \ \ \ \ \ \ \ \ \ \ \ \ (1\ <<\ \ 8)\ \ }\textcolor{comment}{//\ Bit\ for\ User\ Interrupt\ ID:\ 8}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ Interrupt\_ID9\ \ \ \ \ \ \ \ \ \ \ \ \ (1\ <<\ \ 9)\ \ }\textcolor{comment}{//\ Bit\ for\ User\ Interrupt\ ID:\ 9}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ Interrupt\_ID10\ \ \ \ \ \ \ \ \ \ \ \ (1\ <<\ 10)\ \ }\textcolor{comment}{//\ Bit\ for\ User\ Interrupt\ ID:10}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ From\ System\ Control\ Block:}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//\ Useful\ for\ showing\ States\ and\ Pending\ Status}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#define\ ICSR\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0xE000ED04\ \ }\textcolor{comment}{//\ Interrupt\ Control\ and\ State\ Register}}
+
+\end{DoxyCode}

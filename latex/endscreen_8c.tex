@@ -1,0 +1,75 @@
+\doxysection{endscreen.\+c File Reference}
+\hypertarget{endscreen_8c}{}\label{endscreen_8c}\index{endscreen.c@{endscreen.c}}
+
+
+Source-\/\+Datei für den Endscreen.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}maingame.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{endscreen_8c_a914c30862911c7dde08dab95de2ec2ba}{end\+\_\+screen}} (uint8\+\_\+t read\+\_\+char)
+\begin{DoxyCompactList}\small\item\em startet das spiel erneut, falls r oder R eingegeben worden ist \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{endscreen_8c_af830be0cb92dade883cfd9802b294031}{draw\+\_\+you\+\_\+lost}} (int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_af1c49bee42f994c7c85c8e27edb7d109}{player\+\_\+stats}}\mbox{[}3\mbox{]}, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_afdad87c6b6adf9bf32bbf129d052935f}{bot\+\_\+stats}}\mbox{[}3\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um den Loser End Screen darzustellen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{endscreen_8c_a0f4ef674a44a79f216e0472ccfef4ef1}{draw\+\_\+you\+\_\+won}} (int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_af1c49bee42f994c7c85c8e27edb7d109}{player\+\_\+stats}}\mbox{[}3\mbox{]}, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_afdad87c6b6adf9bf32bbf129d052935f}{bot\+\_\+stats}}\mbox{[}3\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um den Win End Screen darzustellen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Source-\/\+Datei für den Endscreen. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{endscreen_8c_af830be0cb92dade883cfd9802b294031}\label{endscreen_8c_af830be0cb92dade883cfd9802b294031} 
+\index{endscreen.c@{endscreen.c}!draw\_you\_lost@{draw\_you\_lost}}
+\index{draw\_you\_lost@{draw\_you\_lost}!endscreen.c@{endscreen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_you\_lost()}{draw\_you\_lost()}}
+{\footnotesize\ttfamily void draw\+\_\+you\+\_\+lost (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{player\+\_\+stats\mbox{[}3\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{bot\+\_\+stats\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um den Loser End Screen darzustellen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+stats} & ist ein array mit allen Stats Arrays des Spielers \\
+\hline
+{\em bot\+\_\+stats} & ist ein array mit allen Stats Arrays des Bots \\
+\hline
+\end{DoxyParams}
+\Hypertarget{endscreen_8c_a0f4ef674a44a79f216e0472ccfef4ef1}\label{endscreen_8c_a0f4ef674a44a79f216e0472ccfef4ef1} 
+\index{endscreen.c@{endscreen.c}!draw\_you\_won@{draw\_you\_won}}
+\index{draw\_you\_won@{draw\_you\_won}!endscreen.c@{endscreen.c}}
+\doxysubsubsection{\texorpdfstring{draw\_you\_won()}{draw\_you\_won()}}
+{\footnotesize\ttfamily void draw\+\_\+you\+\_\+won (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{player\+\_\+stats\mbox{[}3\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{bot\+\_\+stats\mbox{[}3\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um den Win End Screen darzustellen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em player\+\_\+stats} & ist ein array mit allen Stats Arrays des Spielers \\
+\hline
+{\em bot\+\_\+stats} & ist ein array mit allen Stats Arrays des Bots \\
+\hline
+\end{DoxyParams}
+\Hypertarget{endscreen_8c_a914c30862911c7dde08dab95de2ec2ba}\label{endscreen_8c_a914c30862911c7dde08dab95de2ec2ba} 
+\index{endscreen.c@{endscreen.c}!end\_screen@{end\_screen}}
+\index{end\_screen@{end\_screen}!endscreen.c@{endscreen.c}}
+\doxysubsubsection{\texorpdfstring{end\_screen()}{end\_screen()}}
+{\footnotesize\ttfamily void end\+\_\+screen (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{read\+\_\+char }\end{DoxyParamCaption})}
+
+
+
+startet das spiel erneut, falls r oder R eingegeben worden ist 
+
+
+\begin{DoxyParams}{Parameters}
+{\em read\+\_\+char} & ist der eingegebene Character des Spielers \\
+\hline
+\end{DoxyParams}

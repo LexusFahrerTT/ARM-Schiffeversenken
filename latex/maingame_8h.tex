@@ -1,0 +1,209 @@
+\doxysection{maingame.\+h File Reference}
+\hypertarget{maingame_8h}{}\label{maingame_8h}\index{maingame.h@{maingame.h}}
+
+
+Header-\/\+Datei für das Hauptspiel.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}register\+\_\+access.\+h"{}}\newline
+{\ttfamily \#include "{}uart.\+h"{}}\newline
+{\ttfamily \#include "{}random.\+h"{}}\newline
+{\ttfamily \#include "{}timer.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include "{}game.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{maingame_8h_a3c7085a34fe542a77ebd37e7e72c2737}\label{maingame_8h_a3c7085a34fe542a77ebd37e7e72c2737} 
+void {\bfseries Interrupt8\+\_\+\+Handler} (void)
+\begin{DoxyCompactList}\small\item\em Methode, die beim erreichen des Timerwerts ausgeführt wird. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{maingame_8h_a2027aa067152fcf1df82d981023b6764}{show\+\_\+input}} (char text\mbox{[}$\,$\mbox{]}, char ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, die das eingegebene vom user auf dem Screen einleitend darstellt. \end{DoxyCompactList}\item 
+int8\+\_\+t \mbox{\hyperlink{maingame_8h_ab6916c8cbf80e090fd344d895e1209d8}{check\+\_\+if\+\_\+someone\+\_\+won}} (int \texorpdfstring{$\ast$}{*}board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode die überprüft, ob das Board vollständig zerbombt ist. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{maingame_8h_af88cc01d179f8ed0bdd23dd732e5bd71}{show\+\_\+message}} (int8\+\_\+t \mbox{\hyperlink{maingame_8c_a4a07666ad2864503b95cb2c7c159ef4b}{message\+\_\+value}}, char ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode die eine ausgewählte Nachricht auf dem Screen herausprintet. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{maingame_8h_adcc32b047c26a1d2cdbee22f95525e90}{draw\+\_\+main\+\_\+game\+\_\+screen}} (int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_a78400c9ef971c8a4a727daa4fe5aa64d}{my\+\_\+board}}\mbox{[}10\mbox{]}\mbox{[}10\mbox{]}, int \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{maingame_8c_acfdad733e66b880a6532e73ddc9b36c6}{enemy\+\_\+board}}\mbox{[}10\mbox{]}\mbox{[}10\mbox{]})
+\begin{DoxyCompactList}\small\item\em Methode, um den kompletten Main Game Screen zu printen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{maingame_8h_ae4f435af2f2a8ba06ae1d08d19d80138}{draw\+\_\+board}} (int board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]}, char start\+\_\+pos\mbox{[}$\,$\mbox{]}, int8\+\_\+t visible)
+\begin{DoxyCompactList}\small\item\em Helper Methode, um ein komplettes Board zu zeichnen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{maingame_8h_a82ef2570485d704ce1b504d77d3a9ea0}{main\+\_\+game}} (uint8\+\_\+t read\+\_\+char)
+\begin{DoxyCompactList}\small\item\em hauptspiel methode \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{maingame_8h_a8d2f0cfd6151b880cfb5f20ec0b5bc37}\label{maingame_8h_a8d2f0cfd6151b880cfb5f20ec0b5bc37} 
+char {\bfseries ascii\+\_\+art\+\_\+player} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em ASCII Art Spieler. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a9f5998da3f98f653b9f0603702bafa75}\label{maingame_8h_a9f5998da3f98f653b9f0603702bafa75} 
+char {\bfseries ascii\+\_\+art\+\_\+bot} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em ASCII Art Bot. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_aeadbc3c6e63f227793d95e8851c3780d}\label{maingame_8h_aeadbc3c6e63f227793d95e8851c3780d} 
+char {\bfseries set\+\_\+pos} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{maingame_8h_ae3e8b6467f02f35b1779cf8be4cfb81f}\label{maingame_8h_ae3e8b6467f02f35b1779cf8be4cfb81f} 
+char {\bfseries shoot\+\_\+input\+\_\+coordiantes} \mbox{[}$\,$\mbox{]}
+\begin{DoxyCompactList}\small\item\em Satischer Wert, wo das eingetragene vom spieler stehen wird (Koords Angriff) \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_acfdad733e66b880a6532e73ddc9b36c6}\label{maingame_8h_acfdad733e66b880a6532e73ddc9b36c6} 
+int {\bfseries enemy\+\_\+board} \mbox{[}10\mbox{]}\mbox{[}10\mbox{]}
+\begin{DoxyCompactList}\small\item\em Generisches Board. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a78400c9ef971c8a4a727daa4fe5aa64d}\label{maingame_8h_a78400c9ef971c8a4a727daa4fe5aa64d} 
+int {\bfseries my\+\_\+board} \mbox{[}10\mbox{]}\mbox{[}10\mbox{]}
+\begin{DoxyCompactList}\small\item\em Spieler Board. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a69a1ce884c80e296cf2dfdc48d8e59d3}\label{maingame_8h_a69a1ce884c80e296cf2dfdc48d8e59d3} 
+int {\bfseries input\+\_\+counter}
+\begin{DoxyCompactList}\small\item\em Ist Counter, wieviel ein User bereits eingebene hat und fungiert als pointer für das Array input\+\_\+user. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_ac67206c6d6fbc3bdadc633429ee7f32b}\label{maingame_8h_ac67206c6d6fbc3bdadc633429ee7f32b} 
+int {\bfseries input\+\_\+user} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em speichert das eingetragene vom spieler \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a826d52bba06bd2e17c604c700df20aed}\label{maingame_8h_a826d52bba06bd2e17c604c700df20aed} 
+int {\bfseries total\+\_\+shoots\+\_\+player} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a30929df9ca564c700caf6f5eb0a99a23}\label{maingame_8h_a30929df9ca564c700caf6f5eb0a99a23} 
+int {\bfseries total\+\_\+hits\+\_\+player} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a0993c23b4e79599598aeee635d159958}\label{maingame_8h_a0993c23b4e79599598aeee635d159958} 
+int {\bfseries total\+\_\+missess\+\_\+player} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a24673de97ca7fa443b7a38626c6bc65d}\label{maingame_8h_a24673de97ca7fa443b7a38626c6bc65d} 
+int {\bfseries total\+\_\+shoots\+\_\+bot} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_af4ad7fe323fb6a3a44d6fb80ac469018}\label{maingame_8h_af4ad7fe323fb6a3a44d6fb80ac469018} 
+int {\bfseries total\+\_\+hits\+\_\+bot} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a3d3bd7db086e0f9a00735f778552f849}\label{maingame_8h_a3d3bd7db086e0f9a00735f778552f849} 
+int {\bfseries total\+\_\+missess\+\_\+bot} \mbox{[}4\mbox{]}
+\item 
+\Hypertarget{maingame_8h_af1c49bee42f994c7c85c8e27edb7d109}\label{maingame_8h_af1c49bee42f994c7c85c8e27edb7d109} 
+int \texorpdfstring{$\ast$}{*} {\bfseries player\+\_\+stats} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array, mit pointer zu den stats vom Spieler. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_afdad87c6b6adf9bf32bbf129d052935f}\label{maingame_8h_afdad87c6b6adf9bf32bbf129d052935f} 
+int \texorpdfstring{$\ast$}{*} {\bfseries bot\+\_\+stats} \mbox{[}3\mbox{]}
+\begin{DoxyCompactList}\small\item\em Array, mit pointer zu den stats vom Gegner Bot. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a4a07666ad2864503b95cb2c7c159ef4b}\label{maingame_8h_a4a07666ad2864503b95cb2c7c159ef4b} 
+int {\bfseries message\+\_\+value}
+\begin{DoxyCompactList}\small\item\em Wert sagt auf, welche Message dann angezeigt wird. \end{DoxyCompactList}\item 
+\Hypertarget{maingame_8h_a007e95439e9caebbe94c0ea5fd87267c}\label{maingame_8h_a007e95439e9caebbe94c0ea5fd87267c} 
+char {\bfseries message\+\_\+start} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a28f34f6623ef21ad04543349de55999b}\label{maingame_8h_a28f34f6623ef21ad04543349de55999b} 
+char {\bfseries message\+\_\+hit} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{maingame_8h_ae5f2ad5590988fb88fcf77cc08ec4740}\label{maingame_8h_ae5f2ad5590988fb88fcf77cc08ec4740} 
+char {\bfseries message\+\_\+miss} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{maingame_8h_accbfb5a193f0ddde011db3ddbe0808f2}\label{maingame_8h_accbfb5a193f0ddde011db3ddbe0808f2} 
+char {\bfseries message\+\_\+not\+\_\+valid} \mbox{[}$\,$\mbox{]}
+\item 
+\Hypertarget{maingame_8h_a8dd1cd3e2d480e0d02c9785cbd769335}\label{maingame_8h_a8dd1cd3e2d480e0d02c9785cbd769335} 
+char {\bfseries message\+\_\+already\+\_\+shot} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header-\/\+Datei für das Hauptspiel. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{maingame_8h_ab6916c8cbf80e090fd344d895e1209d8}\label{maingame_8h_ab6916c8cbf80e090fd344d895e1209d8} 
+\index{maingame.h@{maingame.h}!check\_if\_someone\_won@{check\_if\_someone\_won}}
+\index{check\_if\_someone\_won@{check\_if\_someone\_won}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{check\_if\_someone\_won()}{check\_if\_someone\_won()}}
+{\footnotesize\ttfamily int8\+\_\+t check\+\_\+if\+\_\+someone\+\_\+won (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode die überprüft, ob das Board vollständig zerbombt ist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & ist das jeweilige übergebene Board \\
+\hline
+\end{DoxyParams}
+\Hypertarget{maingame_8h_ae4f435af2f2a8ba06ae1d08d19d80138}\label{maingame_8h_ae4f435af2f2a8ba06ae1d08d19d80138} 
+\index{maingame.h@{maingame.h}!draw\_board@{draw\_board}}
+\index{draw\_board@{draw\_board}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{draw\_board()}{draw\_board()}}
+{\footnotesize\ttfamily void draw\+\_\+board (\begin{DoxyParamCaption}\item[{int}]{board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]},  }\item[{char}]{start\+\_\+pos\mbox{[}$\,$\mbox{]},  }\item[{int8\+\_\+t}]{visible }\end{DoxyParamCaption})}
+
+
+
+Helper Methode, um ein komplettes Board zu zeichnen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em board} & ist das Board welches gezeichnet werden soll \\
+\hline
+{\em start\+\_\+pos} & Position der zeichnung \\
+\hline
+{\em visible} & 1 falls die Schiffe dargestellt werden sollen, 0 falls nein \\
+\hline
+\end{DoxyParams}
+\Hypertarget{maingame_8h_adcc32b047c26a1d2cdbee22f95525e90}\label{maingame_8h_adcc32b047c26a1d2cdbee22f95525e90} 
+\index{maingame.h@{maingame.h}!draw\_main\_game\_screen@{draw\_main\_game\_screen}}
+\index{draw\_main\_game\_screen@{draw\_main\_game\_screen}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{draw\_main\_game\_screen()}{draw\_main\_game\_screen()}}
+{\footnotesize\ttfamily void draw\+\_\+main\+\_\+game\+\_\+screen (\begin{DoxyParamCaption}\item[{int \texorpdfstring{$\ast$}{*}}]{my\+\_\+board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]},  }\item[{int \texorpdfstring{$\ast$}{*}}]{enemy\+\_\+board\mbox{[}10\mbox{]}\mbox{[}10\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, um den kompletten Main Game Screen zu printen. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em my\+\_\+board} & ist das Board des spielers \\
+\hline
+{\em enemy\+\_\+board} & ist das Baord des Gegeners \\
+\hline
+\end{DoxyParams}
+\Hypertarget{maingame_8h_a82ef2570485d704ce1b504d77d3a9ea0}\label{maingame_8h_a82ef2570485d704ce1b504d77d3a9ea0} 
+\index{maingame.h@{maingame.h}!main\_game@{main\_game}}
+\index{main\_game@{main\_game}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{main\_game()}{main\_game()}}
+{\footnotesize\ttfamily void main\+\_\+game (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{read\+\_\+char }\end{DoxyParamCaption})}
+
+
+
+hauptspiel methode 
+
+
+\begin{DoxyParams}{Parameters}
+{\em read\+\_\+char} & eingegebene vom Spieler \\
+\hline
+\end{DoxyParams}
+\Hypertarget{maingame_8h_a2027aa067152fcf1df82d981023b6764}\label{maingame_8h_a2027aa067152fcf1df82d981023b6764} 
+\index{maingame.h@{maingame.h}!show\_input@{show\_input}}
+\index{show\_input@{show\_input}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{show\_input()}{show\_input()}}
+{\footnotesize\ttfamily void show\+\_\+input (\begin{DoxyParamCaption}\item[{char}]{text\mbox{[}$\,$\mbox{]},  }\item[{char}]{ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode, die das eingegebene vom user auf dem Screen einleitend darstellt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text, der dargestellt wird \\
+\hline
+{\em ansi\+\_\+coordinates} & Position, wo der Text angezeigt wird \\
+\hline
+\end{DoxyParams}
+\Hypertarget{maingame_8h_af88cc01d179f8ed0bdd23dd732e5bd71}\label{maingame_8h_af88cc01d179f8ed0bdd23dd732e5bd71} 
+\index{maingame.h@{maingame.h}!show\_message@{show\_message}}
+\index{show\_message@{show\_message}!maingame.h@{maingame.h}}
+\doxysubsubsection{\texorpdfstring{show\_message()}{show\_message()}}
+{\footnotesize\ttfamily void show\+\_\+message (\begin{DoxyParamCaption}\item[{int8\+\_\+t}]{message\+\_\+value,  }\item[{char}]{ansi\+\_\+coordinates\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Methode die eine ausgewählte Nachricht auf dem Screen herausprintet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message\+\_\+value} & ist die ausgewählte nachricht \\
+\hline
+{\em ansi\+\_\+coordinates} & Position der Nachricht \\
+\hline
+\end{DoxyParams}
