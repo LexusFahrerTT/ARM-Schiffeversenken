@@ -305,6 +305,8 @@ void main_game(uint8_t read_char){
   if(check_if_someone_won(&enemy_board) == 1){
     message_value = 0;
     timer_disable();
+    clear_screen();
+    draw_you_won(player_stats, bot_stats);
     game_mode = 2;  
     //print endscreen won
     return;
@@ -314,6 +316,8 @@ void main_game(uint8_t read_char){
   if(check_if_someone_won(&my_board) == 1){
     message_value = 0;
     timer_disable();
+    clear_screen();
+    draw_you_lost(player_stats, bot_stats);
     game_mode = 3;
     // print endscreen loose
     return;

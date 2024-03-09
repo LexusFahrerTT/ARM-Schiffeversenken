@@ -29,6 +29,11 @@ void start_screen(uint8_t read_char){
   }
 }
 
+
+/**
+ * @brief Methode, die den Starscreen drawt
+ * 
+ */
 void draw_start_screen() {
     char *ascii_art =
         "                                     |__\n"

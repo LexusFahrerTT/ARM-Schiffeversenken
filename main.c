@@ -47,7 +47,7 @@ int main( void )
   // range is between 16.000
 
 
-  //draw start screen
+  draw_start_screen();
   for(;;){
     uint8_t read_char = uart_readByte();
 
@@ -58,11 +58,9 @@ int main( void )
       main_game(read_char);      
     }
     else if(game_mode == 2){
-      clear_screen();
       end_screen(read_char);
     }
     else if(game_mode == 3){
-      clear_screen();
       end_screen(read_char);
     }
   }
