@@ -43,6 +43,7 @@
 
 // Other:
 #define TIMER_TASK_START       1     // Value for starting a Task
+#define TIMER_TASK_STOP       1     // Value for starting a Task
 #define TIMER_EVENT_TRIGGER    1     // Value for setting/starting an Event
 #define TIMER_EVENT_CLEAR      0     // Value for clearing/stopping an Event
 
@@ -83,7 +84,7 @@ void timer_init();
  */
 void timer_init_detailed(uint32_t prescaler, uint32_t bitmode, uint32_t compareValue);
 
-
+ 
 /**
  * @brief Clears the Compare Event for CC[0]
  * 
