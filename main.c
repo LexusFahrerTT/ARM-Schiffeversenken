@@ -65,7 +65,6 @@ int main( void )
       clear_screen();
       end_screen(read_char);
     }
-  
   }
 
   return 0;

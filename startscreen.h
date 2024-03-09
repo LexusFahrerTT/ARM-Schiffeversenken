@@ -15,5 +15,5 @@
  */
 // Deklaration der Funktion start_screen
 void start_screen(uint8_t read_char);
-
+void draw_start_screen();
 #endif /* STARTSCREEN_H */
