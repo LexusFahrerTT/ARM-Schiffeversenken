@@ -1,11 +1,26 @@
+/**
+ * @file game.c
+ * @brief Source-Datei für das "komplette"  Spiel bzw. Varaiblen und Methode, die im gesamten SPiel benötigt werden
+ */
+
 #include <stdint.h>
 #include "maingame.h"
 
-// game mode = 0 | start
-// game mode = 1 | game
-// game mode = 2,3 | end
+
+/**
+ * @brief game mode, welches aussagt, in welchem State sich das Spiel befindet
+ * game mode = 0 | start
+ * game mode = 1 | maingame
+ * game mode = 2,3 | end
+ */
 int game_mode = 0;
 
+
+/**
+ * @brief Methode, um das Board in einen Anfangszutsandt zu versetzen
+ * @param board ist das jeweilige übergebene Board
+ * 
+ */
 void setup_board(int* board[10][10]){
   for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
@@ -16,6 +31,10 @@ void setup_board(int* board[10][10]){
 }
 
 
+/**
+ * @brief Methode, um das Hauptspiel in den Anfangszusatdn zu versetztzen
+ * 
+ */
 void setup_main_game(){
 
     reset_stats_array(total_shoots_player);
@@ -27,12 +46,13 @@ void setup_main_game(){
     reset_stats_array(total_missess_bot);
 
     input_counter = 0;
+    message_value = 0;
 
-
-    int message_value = 0;
     setup_board(&my_board);
     setup_board(&enemy_board);
 
+
+    // muss weg
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             enemy_board[i][j] = ' ';
@@ -42,6 +62,10 @@ void setup_main_game(){
     enemy_board[0][0] = 1;
 }
 
+/**
+ * @brief Methode, um ein Baord mit Schiffen zu versorgen
+ * @param board ist das jeweilige übergebene Board
+ */
 void placeShip(int* board[10][10]) {
     int ship_sizes[] = {5, 4, 4, 3, 3, 3, 3, 2, 2, 2, 2, 2};
     int num_ships = 0;
