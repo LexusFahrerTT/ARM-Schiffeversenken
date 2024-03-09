@@ -3,8 +3,8 @@
  * @brief Header-Datei für den Startscreen
  */
 
-#ifndef MAINGAME_H
-#define MAINGAME_H
+#ifndef STARTSCREEN_H
+#define STARTSCREEN_H
 
 #include <stdint.h>
 
@@ -16,4 +16,4 @@
 // Deklaration der Funktion start_screen
 void start_screen(uint8_t read_char);
 
-#endif /* MAINGAME_H */
+#endif /* STARTSCREEN_H */
