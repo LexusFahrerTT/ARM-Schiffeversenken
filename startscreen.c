@@ -26,6 +26,6 @@ void start_screen(uint8_t read_char){
     //starte timer
     timer_init_detailed(28, 30, 11730);
     game_mode = 1;
-    draw_screen(&my_board, &enemy_board);
+    draw_main_game_screen(&my_board, &enemy_board);
   }
 }

@@ -109,7 +109,7 @@ void show_message(int8_t message_value, char ansi_coordinates[]);
  * @param enemy_board ist das Baord des Gegeners
  * 
  */
-void draw_screen(int* my_board[10][10], int* enemy_board[10][10]);
+void draw_main_game_screen(int* my_board[10][10], int* enemy_board[10][10]);
 
 /**
  * @brief Helper Methode, um ein komplettes Board zu zeichnen

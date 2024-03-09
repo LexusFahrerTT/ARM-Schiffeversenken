@@ -139,7 +139,7 @@ void Interrupt8_Handler(void){
   //timer_init_detailed(8, 30, 5000);
 
   //draw screen zum schluss hihi
-  draw_screen(&my_board, &enemy_board);
+  draw_main_game_screen(&my_board, &enemy_board);
 }
 
 
@@ -207,7 +207,7 @@ void show_message(int8_t message_value,  char ansi_coordinates[]){
  * @param enemy_board ist das Baord des Gegeners
  * 
  */
-void draw_screen(int* my_board[10][10], int* enemy_board[10][10]){
+void draw_main_game_screen(int* my_board[10][10], int* enemy_board[10][10]){
   
   //erst den Screen clean machen :)
   clear_screen();
@@ -381,7 +381,7 @@ void main_game(uint8_t read_char){
             message_value = 4;
           }
           clear_screen();
-          draw_screen(&my_board, &enemy_board);
+          draw_main_game_screen(&my_board, &enemy_board);
           execute_ANSI_or_print_text(shoot_input_coordiantes);
         }
     }
